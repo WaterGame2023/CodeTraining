@@ -21,7 +21,7 @@ public class HelloWorld {
     } else if (change == 0) {
       System.out.println("You Have Enough To Purchase! You do not get any change.");               
     } else {
-      System.out.println("You Do Not Have Enough To Purchase!")
+      System.out.println("You Do Not Have Enough To Purchase!");
     }
   }   
 }
