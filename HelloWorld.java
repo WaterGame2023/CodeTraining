@@ -23,5 +23,25 @@ public class HelloWorld {
     } else {
       System.out.println("You Do Not Have Enough To Purchase!");
     }
-  }   
+  }
+    //meant to print 'Fizz' on every number that isnt divisable by 5 or 7
+    public static FizzBuzz() {
+        String Fizz = "Fizz";
+        String Buzz = "Buzz";
+        String FizzBuzz = "FizzBuzz";
+        int counter = 0;
+      for (int i == 0; i >= 100, i++) {
+        counter++;
+        if (counter % 5 == 0) {
+        System.out.println("Buzz");
+       } else if (counter % 5 == 0 && counter % 7 == 0) {
+        System.out.println("FizzBuzz");  
+      } else {
+        System.out.println("Fizz");
+      }
+    }
+  }
+    public static void placeHolder(double ₍ᐢ•(ܫ)•ᐢ₎ ) {
+    }
+  
 }
