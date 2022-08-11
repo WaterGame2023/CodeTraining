@@ -43,5 +43,60 @@ public class HelloWorld {
   }
     public static void placeHolder(double ₍ᐢ•(ܫ)•ᐢ₎ ) {
     }
-  
+}
+
+
+
+
+//this lacks a few imports
+public PretendSubsystem() {
+    //private MotorType NameOfMotor = new MotorType(Which port is the motor plugged into);
+    private Spark frontRight = new Spark(0);
+    private Spark frontLeft = new Spark(1);
+    private Spark backRight = new Spark(2);
+    private Spark backLeft = new Spark(3);
+  //private MotorControllerGroup NameYouWant = new MotorControllerGroup(One MotorController
+    private MotorControllerGroup leftGroup = new MotorControllerGroup(frontLeft, BackLeft);
+    private MotorControllerGroup rightGroup = new MotorControllerGroup(frontRight, backRight);
+  //private DifferentialDrive NameYouWant = new DifferentialDrive(OneMotorControllerGroup, OtherMotorContollerGroup);
+    private DifferentialDrive diffDrive = new DifferentialDrive(leftGroup, rightGroup);
+    public class PretendSubsystem extends SubsystemBase{
+    leftGroup.setInverted(true);
+    rightGroup.setInverted(false);
+  }
+    public void ArcadeDrive(double speed, double rotation) {
+     diffDrive.arcadeDrive(speed, rotation);
+    }
+}
+
+ public PretendCommand() {
+     private PretendSubsystem pretendSubsystem;
+ public class PretendCommand {
+     addRequirments(pretendSubsystem);
+ }
+ public void execute() {
+    boolean TIP = RobotContainer.gamepad.getRightBumperPressed();
+    boolean turtle = RobotContainer.gamepad.getRawButtonPressed(2);
+    boolean turbo = RobotContainer.gamepad.getRawButtonPressed(3);
+    double speed = turbo ? 0.5 : 1;
+    double rotation = turbo ? 0.4 : 0.75;
+    pretendSubsystem.ArcadeDrive(
+      RobotContainer.touchySticks.getLeftY() * speed,
+      RobotContainer.touchySticks.getRightX() * rotation
+     );
+    }
+  }
+
+}
+//This lacks a few imports too
+public class DemoCode {
+  //private SubsystemName NameYouWant = new SubsystemName(Leave Blank);
+    private PretendSubsystem pretendSubsystem = new PretendSubsystem();
+    private XboxController gamepad = new XboxController;
+    
+    
+    public RobotContainer() {
+    pretendSubsystem.setDefaultCommand(new PretendCommand(PretendSubsystem));
+  } 
+    
 }
